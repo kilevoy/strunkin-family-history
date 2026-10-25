@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>История семьи Стрункиных</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Outfit:wght@400;500;600;700&display=swap');
+  :root{--ink:oklch(0.3211 0 0);--muted:oklch(0.5510 0.0234 264.3637);--paper:oklch(0.9383 0.0042 236.4993);--card:#fff;--line:oklch(0.8452 0 0);--green:oklch(0.4138 0.0846 259.8759);--sage:oklch(0.9119 0.0222 243.8174);--gold:oklch(0.6420 0.1691 38.5815);--serif:'Merriweather',Georgia,'Times New Roman',serif;--sans:'Outfit',Arial,'Segoe UI',sans-serif}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans)}a{color:var(--green)}
+  .hero{min-height:460px;padding:52px 24px 64px;background:linear-gradient(135deg,oklch(0.3743 0.0726 258.5213),oklch(0.4138 0.0846 259.8759) 58%,oklch(0.6420 0.1691 38.5815));color:#fff;display:flex;align-items:end}
+  .hero-inner,.wrap{width:min(1040px,100%);margin:auto}.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.76rem;color:#e7d9ba}.hero h1{font:clamp(2.6rem,7vw,5rem)/1.05 var(--serif);font-weight:400;margin:.4em 0}.hero p{font:1.15rem/1.6 var(--serif);max-width:650px;color:#f3efe5;margin:0}
+  nav{position:sticky;top:0;background:rgba(250,248,242,.95);border-bottom:1px solid var(--line);z-index:5;backdrop-filter:blur(8px)}nav .wrap{display:flex;gap:24px;overflow:auto;padding:12px 20px;white-space:nowrap}nav a{text-decoration:none;font-size:.9rem;color:var(--ink)}
+  main{padding:38px 22px 70px}.section{padding:30px 0 12px}.section h2{font:2rem/1.2 var(--serif);font-weight:400;margin:0 0 12px}.intro{font:1.2rem/1.75 var(--serif);max-width:780px}.subtle{color:var(--muted)}
+  .callout{background:oklch(0.9119 0.0222 243.8174);border-left:4px solid var(--gold);padding:17px 20px;margin:24px 0;border-radius:0 8px 8px 0}.callout strong{color:oklch(0.3791 0.1378 265.5222)}
+  .tree{display:grid;grid-template-columns:1fr auto 1fr;gap:14px 20px;align-items:center;margin:28px 0}.person{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:17px 20px;box-shadow:0 5px 18px #342c1710}.person b{font:1.17rem var(--serif);display:block}.person small{display:block;color:var(--muted);margin-top:4px}.person.focus{border:2px solid var(--green);background:var(--sage)}.person.unknown{border-style:dashed}.connector{color:var(--gold);font-size:1.35rem;text-align:center}.wide{grid-column:1/4;text-align:center}.branch{grid-column:1/4;border-top:1px solid var(--line);margin:5px 0 0;padding-top:24px}.branch .person{max-width:390px;margin:auto}.tree-note{text-align:center;color:var(--muted);font-size:.9rem;grid-column:1/4}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:21px}.card h3{font:1.25rem var(--serif);margin:0 0 8px}.tag{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green);font-weight:700}.timeline{border-left:2px solid var(--line);margin:24px 0 0 9px;padding-left:25px}.event{position:relative;margin:0 0 23px}.event:before{content:'';position:absolute;width:10px;height:10px;border-radius:50%;background:var(--gold);left:-31px;top:8px}.event time{font-weight:700;color:var(--green)}
+  .gallery{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px;margin-top:20px}.gallery figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.gallery img{display:block;width:100%;height:230px;object-fit:cover}.gallery figcaption{padding:12px 14px;font-size:.9rem;color:var(--muted)}
+  details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 18px;margin:10px 0}summary{cursor:pointer;font-weight:700;color:var(--green)}.source{font-size:.93rem;margin:12px 0 0}.footer{border-top:1px solid var(--line);padding:25px 22px 40px;color:var(--muted);font-size:.88rem}.footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media(max-width:720px){.hero{min-height:390px}.cards,.gallery{grid-template-columns:1fr}.gallery img{height:260px}.tree{grid-template-columns:1fr;gap:9px}.connector{transform:rotate(90deg);line-height:1}.wide,.branch,.tree-note{grid-column:1}.person{text-align:center}.branch{padding-top:18px}.section{padding-top:22px}nav .wrap{gap:18px}}
+  @media print{nav{display:none}.hero{min-height:250px;print-color-adjust:exact}.person,.card,figure,details{break-inside:avoid}body{background:white}.section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-inner"><div class="eyebrow">Семейная история · деревня Речная</div><h1>Стрункины</h1><p>История семьи, которую удалось восстановить по метрическим книгам, семейным фотографиям и памяти поколений.</p></div></header>
+<nav><div class="wrap"><a href="#about">О семье</a><a href="#tree">Родословная</a><a href="#people">Люди и места</a><a href="#sources">Источники</a></div></nav>
+<main><div class="wrap">
+  <section class="section" id="about"><h2>Откуда начинается эта история</h2><p class="intro">В центре этой семейной истории — <strong>Александр Васильевич Стрункин</strong>, родившийся, по семейной росписи, в селе Речном в 1924 году. Его отец — <strong>Василий Меркурьевич Стрункин</strong>. В метрической книге 1900 года найдено рождение Василия: запись называет его родителями крестьянина деревни Речной Меркурия Филиппова Стрункина и Марию Тимофееву.</p>
+  <div class="callout"><strong>Что подтверждено, а что ещё ищем.</strong> Рождение Василия и имена его родителей подтверждаются дореволюционной метрической записью. Прямой документ о рождении Александра в имеющихся материалах пока не найден, поэтому связь Александра с Василием приводится по семейной росписи и ожидает архивного подтверждения.</div></section>
+  <section class="section" id="tree"><h2>Семейная ветвь</h2><p class="subtle">Схема показывает основную линию к Александру Васильевичу. Сплошная рамка отмечает ключевого человека; пунктир — связь, которую ещё предстоит подтвердить документом.</p>
+    <div class="tree">
+      <div class="person"><b>Меркурий Филиппов Стрункин</b><small>Крестьянин деревни Речной</small></div><div class="connector">+</div><div class="person"><b>Мария Тимофеева</b><small>Жена Меркурия</small></div>
+      <div class="connector">↓</div><div class="connector"></div><div class="connector"></div>
+      <div class="person focus wide"><b>Василий Меркурьевич Стрункин</b><small>Родился 28 января 1900 года · деревня Речная</small></div>
+      <div class="connector wide">↓</div>
+      <div class="person unknown wide"><b>Александр Васильевич Стрункин</b><small>По семейной росписи родился 14 ноября 1924 года · село Речное</small></div>
+      <div class="branch"><div class="person"><b>Зинаида Ефимовна Стрункина</b><small>Урождённая Тараканова · 14 октября 1928 года</small></div></div>
+      <div class="tree-note">Супружество Александра и Зинаиды указано в семейной росписи.</div>
+    </div>
+  </section>
+  <section class="section" id="people"><h2>Люди и семейные связи</h2><div class="cards">
+    <article class="card"><div class="tag">Предыдущее поколение</div><h3>Меркурий и Мария</h3><p>Жили в деревне Речной. В метрической записи о рождении Василия Меркурий назван крестьянином, а Мария — его законной женой. В семейной росписи также перечислены дети Феодот, Иван, Игнатий и Пелагея; степень подтверждения у каждого различается.</p></article>
+    <article class="card"><div class="tag">Семейный очерк</div><h3>Василий и Александр</h3><p>Рождение Василия 28 января 1900 года зафиксировано в метрической книге Свято-Троицкой церкви села Станового. Александр Васильевич — следующий известный представитель этой ветви. Его дата рождения и отцовство Василия пока опираются на семейную роспись.</p></article>
+    <article class="card"><div class="tag">Родственные связи</div><h3>Зинаида и Таракановы</h3><p>Зинаида Ефимовна, жена Александра, связана с семьёй Таракановых. В росписи её родителями названы Ефим Тараканов и Анна Ивановна Савиных. Для этой цепочки ещё нужны записи о рождении и браке.</p></article>
+  </div></section>
+  <section class="section"><h2>Несколько дат</h2><div class="timeline">
+    <div class="event"><time>1899</time><div>Феодот Меркурьевич Стрункин венчался с Евдокией Тимофеевой в приходе села Станового.</div></div>
+    <div class="event"><time>28 января 1900</time><div>В метрической книге записано рождение Василия, сына Меркурия Филиппова Стрункина и Марии Тимофеевой.</div></div>
+    <div class="event"><time>30 января 1900</time><div>Родился Симеон, сын Феодота Меркурьевича и Евдокии Тимофеевой.</div></div>
+    <div class="event"><time>1924 · по семейной росписи</time><div>Родился Александр Васильевич Стрункин — предполагаемый сын Василия Меркурьевича.</div></div>
+    <div class="event"><time>1928 · по семейной росписи</time><div>Родилась Зинаида Ефимовна Тараканова, позднее жена Александра.</div></div>
+  </div></section>
+  <section class="section"><h2>Память в фотографиях</h2><p class="subtle">Семейные артефакты с кладбища села Речного. Подписи сохранены по описанию фотоархива.</p><div class="gallery">
+    <figure><img src="assets/Стрункины_Иван_Меркурьевич_и_Клавдия_Артемьевна_памятник_Речное.jpg" alt="Памятник Ивану Меркурьевичу и Клавдии Артемьевне Стрункиным"><figcaption>Памятник Ивану Меркурьевичу Стрункину и Клавдии Артемьевне. Село Речное.</figcaption></figure>
+    <figure><img src="assets/Стрункины_Иван_Меркурьевич_и_Клавдия_Артемьевна_портрет.jpg" alt="Портреты Ивана и Клавдии Стрункиных на памятнике"><figcaption>Портретный овал Ивана и Клавдии Стрункиных.</figcaption></figure>
+    <figure><img src="assets/Стрункин_Игнатий_Меркурьевич_1892_1957_портрет_Речное.jpg" alt="Портрет Игнатия Меркурьевича Стрункина"><figcaption>Игнатий Меркурьевич Стрункин, 1892–1957. По семейной атрибуции — сын Меркурия.</figcaption></figure>
+  </div></section>
+  <section class="section" id="sources"><h2>Документальная основа</h2><p>Сведения собраны из семейной росписи и журнала архивного поиска. Вот ключевые записи, на которые можно опереться:</p>
+    <details><summary>Рождение Василия Стрункина · 1900 год</summary><p class="source">ОГАЧО, фонд И-226, опись 1, дело 551, лист 111 (внутренняя нумерация лист 6), запись о рождении № 16. В росписи указано: родился 28 января; родители — Меркурий Филиппов Стрункин и Мария Тимофеева. Скан хранится в семейном архиве..</p></details>
+    <details><summary>Брак Феодота Стрункина · 1899 год</summary><p class="source">ОГАЧО, фонд И-226, опись 1, дело 547, лист 628, запись № 50. Феодот Меркурьевич Стрункин и Евдокия Тимофеева; среди поручителей — Тихон Филиппов Стрункин. Скан хранится в семейном архиве..</p></details>
+    <details><summary>Рождение Симеона, сына Феодота · 1900 год</summary><p class="source">ОГАЧО, фонд И-226, опись 1, дело 551, лист 112, запись № 18. Родители — Феодот Меркурьев Стрункин и Евдокия Тимофеева. Скан хранится в семейном архиве..</p></details>
+    <p class="subtle">Документы о рождении Александра и браке Александра с Зинаидой в просмотренной папке не обнаружены. Даты и родственные связи для этих поколений помечены как сведения семейной росписи, а не как вывод из предъявленного первичного акта.</p>
+  </section>
+</div></main>
+<footer class="footer"><div class="wrap"><span>Семейная история Стрункиных</span><span>Составлено по материалам семейного архива · 2026</span></div></footer>
+</body></html>
+
+
+
+
