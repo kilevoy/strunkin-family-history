@@ -19,12 +19,14 @@
   .scan-preview{display:block;width:min(100%,760px);max-height:80vh;object-fit:contain;margin:14px 0 2px;border:1px solid var(--line);border-radius:8px;background:#f5f4ef}.gallery{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px;margin-top:20px}.gallery figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.gallery img{display:block;width:100%;height:230px;object-fit:cover}.gallery figcaption{padding:12px 14px;font-size:.9rem;color:var(--muted)}
   details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:15px 18px;margin:10px 0}summary{cursor:pointer;font-weight:700;color:var(--green)}.source{font-size:.93rem;margin:12px 0 0}.footer{border-top:1px solid var(--line);padding:25px 22px 40px;color:var(--muted);font-size:.88rem}.footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   @media(max-width:720px){.hero{min-height:390px}.cards,.gallery{grid-template-columns:1fr}.gallery img{height:260px}.tree{grid-template-columns:1fr;gap:9px}.connector{transform:rotate(90deg);line-height:1}.wide,.branch,.tree-note{grid-column:1}.person{text-align:center}.branch{padding-top:18px}.section{padding-top:22px}nav .wrap{gap:18px}}
+  .village-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:22px;align-items:start}.village-map{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}.village-map img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;background:#e9e5d8}.village-map figcaption{padding:12px 15px;font-size:.9rem;color:var(--muted)}.place-fact{padding:12px 15px;margin:0 0 10px;border-left:3px solid var(--gold);background:var(--sage);border-radius:0 8px 8px 0}.place-fact b,.place-fact span{display:block}.place-fact b{font-family:var(--serif);margin-bottom:3px}
+  @media(max-width:720px){.village-grid{grid-template-columns:1fr}}
   @media print{nav{display:none}.hero{min-height:250px;print-color-adjust:exact}.person,.card,figure,details{break-inside:avoid}body{background:white}.section{break-inside:avoid}}
 </style>
 </head>
 <body>
 <header class="hero"><div class="hero-inner"><div class="eyebrow">Семейная история · деревня Речная</div><h1>Стрункины</h1><p>История семьи, которую удалось восстановить по метрическим книгам, семейным фотографиям и памяти поколений.</p></div></header>
-<nav><div class="wrap"><a href="#about">О семье</a><a href="#tree">Родословная</a><a href="#people">Люди и места</a><a href="#sources">Источники</a></div></nav>
+<nav><div class="wrap"><a href="#about">О семье</a><a href="#tree">Родословная</a><a href="#village">Деревня Речная</a><a href="#people">Люди и места</a><a href="#sources">Источники</a></div></nav>
 <main><div class="wrap">
   <section class="section" id="about"><h2>Откуда начинается эта история</h2><p class="intro">В центре этой семейной истории — <strong>Александр Васильевич Стрункин</strong>, родившийся, по семейной росписи, в селе Речном в 1924 году. Его отец — <strong>Василий Меркурьевич Стрункин</strong>. В метрической книге 1900 года найдено рождение Василия: запись называет его родителями крестьянина деревни Речной Меркурия Филиппова Стрункина и Марию Тимофееву.</p>
   <div class="callout"><strong>Что подтверждено, а что ещё ищем.</strong> Рождение Василия и имена его родителей подтверждаются дореволюционной метрической записью. Прямой документ о рождении Александра в имеющихся материалах пока не найден, поэтому связь Александра с Василием приводится по семейной росписи и ожидает архивного подтверждения.</div></section>
@@ -37,6 +39,11 @@
       <div class="person unknown wide"><b>Александр Васильевич Стрункин</b><small>По семейной росписи родился 14 ноября 1924 года · село Речное</small></div>
       <div class="branch"><div class="person"><b>Зинаида Ефимовна Стрункина</b><small>Урождённая Тараканова · 14 октября 1928 года</small></div></div>
       <div class="tree-note">Супружество Александра и Зинаиды указано в семейной росписи.</div>
+    </div>
+  </section>
+  <section class="section" id="village"><h2>Деревня Речная — место, где жила семья</h2><p class="subtle">В старых источниках встречаются названия «Речная» и «Речнинское», позднее закрепилось «Речное».</p>
+    <div class="village-grid"><figure class="village-map"><a href="assets/village-rechnaya-map-1919.jpg" target="_blank" rel="noopener"><img src="assets/village-rechnaya-map-1919.jpg" alt="Фрагмент карты 1919 года с деревней Речной у озера Речного" loading="lazy"></a><figcaption>Фрагмент карты РККА, 1919 год. На ней обозначена деревня Речная. Изображение можно открыть отдельно и увеличить; точное положение двора семьи по этой карте определить нельзя.</figcaption></figure>
+      <div><div class="place-fact"><b>Не позднее 1872 года</b><span>Речная уже значится в перечне населённых мест Челябинского уезда.</span></div><div class="place-fact"><b>1886 год</b><span>Указаны 30 дворов и 258 жителей; деревня стояла при озере Речном.</span></div><div class="place-fact"><b>1926 год</b><span>По краеведческому досье, в Речном жило 439 человек; деревня относилась к Сетовскому сельсовету.</span></div><div class="place-fact"><b>1970–1972 годы</b><span>Деревня опустела при переселении жителей в более крупные сёла.</span></div><p>В метрических книгах Свято-Троицкого прихода предки этой семейной ветви записаны как крестьяне деревни Речной. Там родился Василий Меркурьевич Стрункин, будущий отец Александра — по семейной росписи.</p><p><a href="https://kilevoy.github.io/barbul-family-history/rechnoe/" target="_blank" rel="noopener">Подробнее об истории деревни Речное</a></p></div>
     </div>
   </section>
   <section class="section" id="people"><h2>Люди и семейные связи</h2><div class="cards">
@@ -65,6 +72,7 @@
 </div></main>
 <footer class="footer"><div class="wrap"><span>Семейная история Стрункиных</span><span>Составлено по материалам семейного архива · 2026</span></div></footer>
 </body></html>
+
 
 
 
