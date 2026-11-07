@@ -50,14 +50,19 @@
 	</head>
 	<body>
         <header class="family-bar"><a href="../index.html">← На главную семейного сайта</a><h1>Родословное древо Стрункиных</h1>
-        <div class="family-note">Рабочая семейная схема: часть линий основана на семейной памяти или гипотезах. Линия сама по себе не подтверждает родство. Подробнее — в карточке человека и источниках.</div>
+        <div class="family-note">Номера I–V показывают строки поколений в этой схеме. Часть линий основана на семейной памяти или гипотезах. Линия сама по себе не подтверждает родство. Подробнее — в карточке человека и источниках.</div>
         <div class="family-actions"><button id="zoomOut" aria-label="Уменьшить">−</button><button id="zoomIn" aria-label="Увеличить">+</button><button id="zoomReset">Исходный масштаб</button><span id="zoomValue">100%</span><span>Перетаскивайте схему мышью или пальцем; нажмите на человека, чтобы открыть карточку.</span></div></header>
-		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="2876" height="673" id="svg0" data-root="g447">
-			<rect id="rect2" class="s3" x="0" y="0" width="2876" height="673" />
-			<g id="g441">
-				<rect id="rect0" class="s12" x="0" y="400" width="2876" height="172" />
-				<rect id="rect1" class="s12" x="0" y="106" width="2876" height="140" />
-				<g id="g442" transform="translate(25,10)">
+		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="2996" height="673" id="svg0" data-root="g447">
+			<rect id="rect2" class="s3" x="0" y="0" width="2996" height="673" />
+			<g aria-label="Поколения схемы" font-family="Georgia, serif" fill="#526a62">
+<text x="20" y="47" font-size="13">ПОКОЛЕНИЕ</text><text x="20" y="70" font-size="22">I</text>
+<text x="20" y="173" font-size="13">ПОКОЛЕНИЕ</text><text x="20" y="196" font-size="22">II</text>
+<text x="20" y="313" font-size="13">ПОКОЛЕНИЕ</text><text x="20" y="336" font-size="22">III</text>
+<text x="20" y="479" font-size="13">ПОКОЛЕНИЕ</text><text x="20" y="502" font-size="22">IV</text>
+<text x="20" y="628" font-size="13">ПОКОЛЕНИЕ</text><text x="20" y="651" font-size="22">V</text></g><g id="g441">
+				<rect id="rect0" class="s12" x="0" y="400" width="2996" height="172" />
+				<rect id="rect1" class="s12" x="0" y="106" width="2996" height="140" />
+				<g id="g442" transform="translate(145,10)">
 					<g id="g448">
 						<g id="g542" transform="translate(613,0)">
 							<g id="g543">
@@ -1137,8 +1142,8 @@ window.addEventListener('DOMContentLoaded', function (){
 		</div>
 	<script>
 (function(){
-  const svg=document.getElementById('svg0'), output=document.getElementById('zoomValue'); let scale=1,pan=null; svg.setAttribute('viewBox','0 0 2876 673');
-  function setScale(next){scale=Math.min(2.5,Math.max(.35,next));svg.style.width=(2876*scale)+'px';svg.style.height=(673*scale)+'px';output.textContent=Math.round(scale*100)+'%'}
+  const svg=document.getElementById('svg0'), output=document.getElementById('zoomValue'); let scale=1,pan=null; svg.setAttribute('viewBox','0 0 2996 673');
+  function setScale(next){scale=Math.min(2.5,Math.max(.35,next));svg.style.width=(2996*scale)+'px';svg.style.height=(673*scale)+'px';output.textContent=Math.round(scale*100)+'%'}
   document.getElementById('zoomIn').onclick=()=>setScale(scale*1.2);
   document.getElementById('zoomOut').onclick=()=>setScale(scale/1.2);
   document.getElementById('zoomReset').onclick=()=>setScale(1);
