@@ -44,15 +44,16 @@
             .family-actions button { border:1px solid #d8c9ac;border-radius:4px;padding:6px 10px;background:#fffdf6;color:#263f5a;cursor:pointer;font-size:14px; }
             .family-note { font:12px/1.4 sans-serif;color:#e9e5d9;max-width:1000px; }
             #svg0 { display:block; touch-action:none; } #svg0 .po { cursor:pointer; }
+            .tree-canvas { max-width:100%; overflow:auto; margin:0; background:#f8f7f1; border-top:1px solid #ddd8ca; border-bottom:1px solid #ddd8ca; }
             .modal { z-index:30; } .modal-content { max-width:calc(100% - 20px); }
-            @media(max-width:700px){body{padding-top:220px}.family-bar h1{font-size:18px}.family-note{font-size:11px}}
+            @media(max-width:700px){body{padding-top:220px;overflow-x:hidden}.family-bar h1{font-size:18px}.family-note{font-size:11px}.family-actions{gap:6px}.family-actions span:last-child{display:block;width:100%;font-size:11px}.tree-canvas{height:calc(100vh - 240px);min-height:420px;box-shadow:inset 0 0 24px #263f5a12}.tree-canvas:after{content:'Проведите пальцем по схеме ↔';display:block;position:sticky;bottom:8px;width:max-content;margin:0 auto 8px;padding:5px 9px;border-radius:99px;background:#263f5add;color:#fff;font:11px sans-serif;pointer-events:none}}
             </style>
 	</head>
 	<body>
         <header class="family-bar"><a href="../index.html">← На главную семейного сайта</a><h1>Родословное древо Стрункиных</h1>
         <div class="family-note">Номера I–V показывают строки поколений в этой схеме. Часть линий основана на семейной памяти или гипотезах. Линия сама по себе не подтверждает родство. Подробнее — в карточке человека и источниках.</div>
         <div class="family-actions"><button id="zoomOut" aria-label="Уменьшить">−</button><button id="zoomIn" aria-label="Увеличить">+</button><button id="zoomReset">Исходный масштаб</button><span id="zoomValue">100%</span><span>Перетаскивайте схему мышью или пальцем; нажмите на человека, чтобы открыть карточку.</span></div></header>
-		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="2996" height="673" id="svg0" data-root="g447">
+		<div class="tree-canvas"><svg xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="2996" height="673" id="svg0" data-root="g447">
 			<rect id="rect2" class="s3" x="0" y="0" width="2996" height="673" />
 			<g aria-label="Поколения схемы" font-family="Georgia, serif" fill="#526a62">
 <text x="20" y="47" font-size="13">ПОКОЛЕНИЕ</text><text x="20" y="70" font-size="22">I</text>
@@ -1131,7 +1132,7 @@ window.addEventListener('DOMContentLoaded', function (){
 	a = undefined;
 });
 //]]></script>
-		</svg>
+		</svg></div>
 		<div id="myModal" class="modal">
 			<div class="modal-content" id="modalContentWrap">
 				<div class="gbtn back" title="Назад"></div>
@@ -1142,13 +1143,13 @@ window.addEventListener('DOMContentLoaded', function (){
 		</div>
 	<script>
 (function(){
-  const svg=document.getElementById('svg0'), output=document.getElementById('zoomValue'); let scale=1,pan=null; svg.setAttribute('viewBox','0 0 2996 673');
+  const svg=document.getElementById('svg0'), canvas=svg.parentElement, output=document.getElementById('zoomValue'); let scale=1,pan=null; svg.setAttribute('viewBox','0 0 2996 673');
   function setScale(next){scale=Math.min(2.5,Math.max(.35,next));svg.style.width=(2996*scale)+'px';svg.style.height=(673*scale)+'px';output.textContent=Math.round(scale*100)+'%'}
   document.getElementById('zoomIn').onclick=()=>setScale(scale*1.2);
   document.getElementById('zoomOut').onclick=()=>setScale(scale/1.2);
   document.getElementById('zoomReset').onclick=()=>setScale(1);
-  svg.addEventListener('pointerdown',function(e){if(e.button!==0||e.target.closest('[data-id],[data-ref],[data-link]'))return;pan={x:e.clientX,y:e.clientY,left:window.scrollX,top:window.scrollY};svg.setPointerCapture(e.pointerId);svg.style.cursor='grabbing'});
-  svg.addEventListener('pointermove',function(e){if(!pan)return;window.scrollTo(pan.left+pan.x-e.clientX,pan.top+pan.y-e.clientY)});
+  svg.addEventListener('pointerdown',function(e){if(e.button!==0||e.target.closest('[data-id],[data-ref],[data-link]'))return;pan={x:e.clientX,y:e.clientY,left:canvas.scrollLeft,top:canvas.scrollTop};svg.setPointerCapture(e.pointerId);svg.style.cursor='grabbing'});
+  svg.addEventListener('pointermove',function(e){if(!pan)return;canvas.scrollLeft=pan.left+pan.x-e.clientX;canvas.scrollTop=pan.top+pan.y-e.clientY});
   function stop(){pan=null;svg.style.cursor=''} svg.addEventListener('pointerup',stop);svg.addEventListener('pointercancel',stop);
 })();
 </script></body>
