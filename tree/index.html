@@ -46,7 +46,7 @@
             #svg0 { display:block; touch-action:none; } #svg0 .po { cursor:pointer; }
             .tree-canvas { max-width:100%; overflow:auto; margin:0; background:#f8f7f1; border-top:1px solid #ddd8ca; border-bottom:1px solid #ddd8ca; }
             .modal { z-index:30; } .modal-content { max-width:calc(100% - 20px); }
-            @media(max-width:700px){body{padding-top:220px;overflow-x:hidden}.family-bar h1{font-size:18px}.family-note{font-size:11px}.family-actions{gap:6px}.family-actions span:last-child{display:block;width:100%;font-size:11px}.tree-canvas{height:calc(100vh - 240px);min-height:420px;box-shadow:inset 0 0 24px #263f5a12}.tree-canvas:after{content:'Проведите пальцем по схеме ↔';display:block;position:sticky;bottom:8px;width:max-content;margin:0 auto 8px;padding:5px 9px;border-radius:99px;background:#263f5add;color:#fff;font:11px sans-serif;pointer-events:none}}
+            @media(max-width:700px){body{padding-top:220px;overflow-x:hidden}.family-bar h1{font-size:18px}.family-note{font-size:11px}.family-actions{gap:6px}.family-actions span:last-child{display:block;width:100%;font-size:11px}.tree-canvas{height:calc(100vh - 240px);min-height:420px;box-shadow:inset 0 0 24px #263f5a12}.tree-canvas:after{content:'Проведите пальцем по схеме ↔';display:block;position:sticky;bottom:8px;width:max-content;margin:0 auto 8px;padding:5px 9px;border-radius:99px;background:#263f5add;color:#fff;font:11px sans-serif;pointer-events:none}.modal{padding-top:10px}.modal-content{width:calc(100vw - 20px);max-width:calc(100vw - 20px);height:calc(100vh - 20px);min-height:0;padding:5px 8px 10px 10px}.modal-frame{height:calc(100% - 4px)}}
             </style>
 	</head>
 	<body>
@@ -1111,6 +1111,14 @@ window.addEventListener('DOMContentLoaded', function (){
 
 	var navToPerson = function () {
 		mc.innerHTML = '<iframe id="idetail" onload="currpos+=1;" src="СТрункины.html.files/p' + this.dataset.id + '.html?v=1" class="modal-frame"></iframe>';
+		var frame = document.getElementById('idetail');
+		frame.addEventListener('load', function () {
+			var doc = frame.contentDocument;
+			if (!doc || !doc.head) return;
+			var responsive = doc.createElement('style');
+			responsive.textContent = 'html,body{width:100%;min-width:0;max-width:100%;margin:0;padding:0;overflow-x:hidden}body{display:block}svg{display:block;width:100%;max-width:100%;height:auto;max-height:none}text{max-width:100%}';
+			doc.head.appendChild(responsive);
+		});
 		modal.style.display = 'block';
 		setH(this.id);
 	}
