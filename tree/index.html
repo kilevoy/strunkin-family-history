@@ -39,7 +39,7 @@
 		
             body { padding-top: 170px; background:#f3f1eb; }
             .family-bar { position:fixed;top:0;left:0;right:0;z-index:20;background:#263f5a;color:white;padding:12px 20px;box-shadow:0 2px 10px #0003;font:14px/1.4 Georgia,serif; }
-            .family-bar a { color:#f3d69b; } .family-bar h1 { font-size:21px;margin:4px 0;font-weight:normal; }
+            .family-bar a { color:#f3d69b; text-decoration:none; } .family-bar .home-btn { display:inline-block;background:#375476;border:1px solid #f3d69b;padding:5px 12px;border-radius:6px;font-weight:bold;margin-bottom:4px;transition:all 0.2s; } .family-bar .home-btn:hover { background:#f3d69b;color:#1e3247; } .family-bar h1 { font-size:21px;margin:4px 0;font-weight:normal; }
             .family-actions { display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:7px; }
             .family-actions button { border:1px solid #d8c9ac;border-radius:4px;padding:6px 10px;background:#fffdf6;color:#263f5a;cursor:pointer;font-size:14px; }
             .family-note { font:12px/1.4 sans-serif;color:#e9e5d9;max-width:1000px; }
@@ -50,7 +50,7 @@
             </style>
 	</head>
 	<body>
-        <header class="family-bar"><a href="../index.html">← На главную семейного сайта</a><h1>Родословное древо Стрункиных</h1>
+        <header class="family-bar"><a href="../index.html" class="home-btn">← Вернуться к истории семьи</a><h1>Родословное древо Стрункиных</h1>
         <div class="family-note">Номера I–V показывают строки поколений в этой схеме. Часть линий основана на семейной памяти или гипотезах. Линия сама по себе не подтверждает родство. Подробнее — в карточке человека и источниках.</div>
         <div class="family-actions"><button id="zoomOut" aria-label="Уменьшить">−</button><button id="zoomIn" aria-label="Увеличить">+</button><button id="zoomReset">Исходный масштаб</button><span id="zoomValue">100%</span><span>Перетаскивайте схему мышью или пальцем; нажмите на человека, чтобы открыть карточку.</span></div></header>
 		<div class="tree-canvas"><svg xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="2996" height="673" id="svg0" data-root="g447">
