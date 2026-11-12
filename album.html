@@ -2977,12 +2977,31 @@
       }
     }
 
+    function isGenericTitle(title) {
+      return !/(Стрункин|Тараканов|Савиных|Слепенькин|Рыкунов|Александр|Зинаида|Валентин|Татьян|Владимир|Иван\s+Меркур|Игнатий|Анна\s+Ивановн)/i.test(title || '');
+    }
+
+    function updateLightboxCaption(card, photoId) {
+      const fig = card.querySelector('figcaption');
+      const items = commentsByPhoto[photoId] || [];
+      const origTitle = fig?.querySelector('strong')?.textContent.trim() || '';
+      if (items.length > 0 && isGenericTitle(origTitle)) {
+        const latest = items[items.length - 1];
+        lbCap.innerHTML = `<strong>${escHtml(latest.text)}</strong><small>Подписал(а): ${escHtml(latest.author)} · ${escHtml(latest.date)}</small>`;
+      } else {
+        lbCap.innerHTML = fig ? fig.innerHTML : '';
+      }
+    }
+
     function renderLightboxComments(photoId) {
       const items = commentsByPhoto[photoId] || [];
       lbToggleForm.textContent = items.length ? `Написать свою заметку (уже есть: ${items.length})` : 'Записать заметку к этому фото';
       lbCommentList.innerHTML = items.map(it =>
         `<li class="comment-item"><div class="c-meta"><b>${escHtml(it.author)}</b> · ${escHtml(it.date)}</div><div>${escHtml(it.text)}</div></li>`
       ).join('');
+      if (cards[cur] && cards[cur].dataset.photoId === photoId) {
+        updateLightboxCaption(cards[cur], photoId);
+      }
     }
 
     function show(idx) {
@@ -2990,10 +3009,9 @@
       const card = cards[cur];
       const photoId = card.dataset.photoId;
       const img = card.querySelector('img');
-      const fig = card.querySelector('figcaption');
       lbImg.src = img.src;
       lbImg.alt = img.alt;
-      lbCap.innerHTML = fig ? fig.innerHTML : '';
+      updateLightboxCaption(card, photoId);
       lbCommentForm.classList.remove('open');
       lbCommentStatus.textContent = '';
       if (savedAuthor) lbCommentForm.author.value = savedAuthor;
