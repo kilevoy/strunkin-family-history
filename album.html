@@ -348,7 +348,7 @@
     const list = card.querySelector('.comment-list');
     const toggle = card.querySelector('.comment-toggle');
     const items = commentsByPhoto[photoId] || [];
-    toggle.textContent = items.length ? `💬 Написать, кто на фото (${items.length})` : '✏️ Написать, кто на фото';
+    toggle.textContent = items.length ? `💬 Информация о фото (${items.length})` : '✏️ Добавить информацию о фото';
     list.innerHTML = items.map(it =>
       `<li class="comment-item"><div class="c-meta"><b>${escHtml(it.author)}</b> · ${escHtml(it.date)}</div><div>${escHtml(it.text)}</div></li>`
     ).join('');
@@ -359,12 +359,12 @@
     const box = document.createElement('div');
     box.className = 'photo-comments';
     box.innerHTML = `
-      <button type="button" class="comment-toggle">✏️ Написать, кто на фото</button>
+      <button type="button" class="comment-toggle">✏️ Добавить информацию о фото</button>
       <ul class="comment-list"></ul>
       <form class="comment-form">
         <input type="text" name="author" placeholder="Ваше имя (например: Татьяна, Андрей)" maxlength="60" required>
-        <textarea name="text" placeholder="Кто на фото (например: 4-я слева — Валентина, 1958 г.)" maxlength="600" required></textarea>
-        <button type="submit">Отправить комментарий</button>
+        <textarea name="text" placeholder="Кто на снимке, где и в каком году сделано фото, памятная история..." maxlength="600" required></textarea>
+        <button type="submit">Сохранить информацию</button>
         <div class="comment-status"></div>
       </form>
     `;
