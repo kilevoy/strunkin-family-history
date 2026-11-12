@@ -5,7 +5,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Персона</title>
 		<style type="text/css">
-			body { display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center; }
+			body { display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:14px;padding:12px;margin:0; }
+			.portrait-box { display:flex;align-items:center;gap:14px;max-width:678px;width:100%;background:#f7f7f2;border:1px solid #d8d8d0;border-radius:8px;padding:10px 12px;box-sizing:border-box;font-family:Arial,sans-serif; }
+			.portrait-box img { width:92px;height:124px;object-fit:cover;border-radius:6px;border:1px solid #c9c7bd;flex-shrink:0; }
+			.portrait-box .pmeta { font-size:13px;line-height:1.45;color:#222; }
+			.portrait-box .pmeta b { display:block;font-size:14px;margin-bottom:4px;color:#173b3e; }
 			.s0 { stroke:#FFFFFF;stroke-width:0,5px;stroke-linecap:square;fill:none;vector-effect:non-scaling-stroke; }
 			.s1 { stroke:#D8D8D8;stroke-width:0,5px;stroke-linecap:square;fill:none; }
 			.s2 { stroke:none;fill:#F7F7F7; }
@@ -26,6 +30,15 @@
 		</style>
 	</head>
 	<body>
+		<div class="portrait-box">
+			<img src="../../assets/Стрункин_Александр_Васильевич_1944_ВМФ_Моздок.jpg" alt="Стрункин Александр Васильевич, 1944 г., ВМФ СССР">
+			<div class="pmeta">
+				<b>Служба в ВВС ВМФ СССР и образование</b>
+				<div>1944 г. — обучение при ВОК ВВС ВМФ в г. Моздоке, авиационный техник морской авиации (снимок 1944 г. в форме ВМФ с погонами).</div>
+				<div>После ВОВ (ок. 1945–1948 гг.) — окончание партийной школы им. В. М. Молотова в Прибалтике (семейное свидетельство).</div>
+				<div>Отцовство и брак с Зинаидой Ефимовной на 1950 г. подтверждены ЗАГС (г. Челябинск, 1950).</div>
+			</div>
+		</div>
 		<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="678" height="443" id="svg0">
 			<g id="g0">
 				<g id="g1">
