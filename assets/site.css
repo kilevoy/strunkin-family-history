@@ -175,9 +175,7 @@ summary:hover{background:#faf6ec;border-radius:12px}
 .photo-thumb:hover img{transform:scale(1.03)}
 .photo-badge{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);background:rgba(20,35,35,.82);color:#fff;font-size:.8rem;font-weight:700;padding:3px 9px;border-radius:999px}
 .thumb-note-count{position:absolute;right:8px;top:8px;background:var(--gold-b);color:#22201a;font-size:.85rem;font-weight:700;padding:3px 9px;border-radius:999px}
-.photo-card figcaption{padding:10px 12px 0;margin-bottom:14px;font-size:.93rem;line-height:1.4;color:var(--muted);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
-.photo-card figcaption strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:3px}
-.photo-card figcaption small{display:none}
+.photo-card figcaption{display:none}
 
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(14,22,22,.97);display:none;overflow:auto;-webkit-overflow-scrolling:touch}
 .lightbox.open{display:block}
