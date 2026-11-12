@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Родословное древо — семья Стрункиных</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&amp;family=PT+Serif:wght@400;700&amp;display=swap" rel="stylesheet">
 		<style type="text/css">
 			* { padding: 0; margin: 0; border: 0; }
 			.modal { display: none; position: fixed; z-index: 1; padding-top: 2%; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4); }
@@ -47,12 +48,35 @@
             .tree-canvas { max-width:100%; overflow:auto; margin:0; background:#f8f7f1; border-top:1px solid #ddd8ca; border-bottom:1px solid #ddd8ca; }
             .modal { z-index:30; } .modal-content { max-width:calc(100% - 20px); }
             @media(max-width:700px){body{padding-top:220px;overflow-x:hidden}.family-bar h1{font-size:18px}.family-note{font-size:11px}.family-actions{gap:6px}.family-actions span:last-child{display:block;width:100%;font-size:11px}.tree-canvas{height:calc(100vh - 240px);min-height:420px;box-shadow:inset 0 0 24px #263f5a12}.tree-canvas:after{content:'Проведите пальцем по схеме ↔';display:block;position:sticky;bottom:8px;width:max-content;margin:0 auto 8px;padding:5px 9px;border-radius:99px;background:#263f5add;color:#fff;font:11px sans-serif;pointer-events:none}.modal{padding-top:10px}.modal-content{width:calc(100vw - 20px);max-width:calc(100vw - 20px);height:calc(100vh - 20px);min-height:0;padding:5px 8px 10px 10px}.modal-frame{height:calc(100% - 4px)}}
+            
+            /* --- Крупная понятная шапка и кнопки --- */
+            html, body { height:100%; }
+            body { padding-top:0 !important; display:flex; flex-direction:column; overflow:hidden; background:#f6f2e9; font-family:'PT Sans','Segoe UI',Arial,sans-serif; }
+            .family-bar { position:static; flex:none; background:#143433; padding:12px 16px 14px; font:16px/1.45 'PT Sans','Segoe UI',Arial,sans-serif; }
+            .family-bar .bar-top { display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; }
+            .family-bar h1 { font:400 24px/1.2 'PT Serif',Georgia,serif; margin:0; color:#fff; }
+            .family-bar .home-btn { display:inline-flex; align-items:center; min-height:48px; padding:0 18px; margin:0; border:2px solid #edcb8e; border-radius:10px; background:#edcb8e; color:#22201a; font-size:16px; font-weight:bold; }
+            .family-bar .home-btn:hover { background:#fff; border-color:#fff; color:#22201a; }
+            .family-note { font:15px/1.45 'PT Sans','Segoe UI',Arial,sans-serif; color:#e6ece8; margin-top:8px; max-width:1100px; }
+            .family-note b { color:#f3dcae; }
+            .legend { display:inline-block; width:14px; height:14px; border-radius:3px; vertical-align:-2px; margin:0 4px 0 2px; border:1px solid #0003; }
+            .family-actions { gap:8px; margin-top:10px; }
+            .family-actions button { min-height:48px; padding:0 18px; border:2px solid #fff; border-radius:10px; background:#fffdf8; color:#143433; font:bold 16px 'PT Sans','Segoe UI',Arial,sans-serif; }
+            .family-actions button:hover { background:#edcb8e; border-color:#edcb8e; }
+            .family-actions #zoomValue { font-weight:bold; min-width:52px; }
+            .tree-canvas { flex:1 1 auto; min-height:0; height:auto !important; overflow:auto; -webkit-overflow-scrolling:touch; }
+            .tree-canvas:after { display:none !important; }
+            .modal-content { border-radius:12px; }
+            .close { font-size:34px; line-height:44px; color:#143433; padding:0 8px; margin-right:6px; }
+            .close:before { content:"Закрыть "; font:bold 16px 'PT Sans','Segoe UI',Arial,sans-serif; vertical-align:middle; }
+            .gbtn { width:36px; height:36px; background-size:contain; background-position:center; }
+            @media(max-width:700px){ body{padding-top:0 !important} .family-bar{padding:10px 12px 12px} .family-bar h1{font-size:20px} .family-note{font-size:14px} .family-note .long{display:none} .family-actions button{padding:0 14px;font-size:15px} .family-actions .tip{display:none} }
             </style>
 	</head>
 	<body>
-        <header class="family-bar"><a href="../index.html" class="home-btn">← Вернуться к истории семьи</a><h1>Родословное древо Стрункиных</h1>
-        <div class="family-note">Номера I–V показывают строки поколений в этой схеме. Часть линий основана на семейной памяти или гипотезах. Линия сама по себе не подтверждает родство. Подробнее — в карточке человека и источниках.</div>
-        <div class="family-actions"><button id="zoomOut" aria-label="Уменьшить">−</button><button id="zoomIn" aria-label="Увеличить">+</button><button id="zoomReset">Исходный масштаб</button><span id="zoomValue">100%</span><span>Перетаскивайте схему мышью или пальцем; нажмите на человека, чтобы открыть карточку.</span></div></header>
+        <header class="family-bar"><div class="bar-top"><a href="../index.html" class="home-btn">← На главную страницу</a><h1>Родословное древо Стрункиных</h1></div>
+        <div class="family-note"><b>Как пользоваться:</b> нажмите на человека — откроется его карточка. Схему можно двигать пальцем или мышью. <span class="legend" style="background:#92DDF9"></span>мужчины <span class="legend" style="background:#FBD27A"></span>женщины.<span class="long"> Номера I–V показывают строки поколений в этой схеме. Часть линий основана на семейной памяти или гипотезах. Линия сама по себе не подтверждает родство. Подробнее — в карточке человека и источниках.</span></div>
+        <div class="family-actions"><button id="zoomOut" aria-label="Уменьшить схему">− Мельче</button><button id="zoomIn" aria-label="Увеличить схему">+ Крупнее</button><button id="zoomFit">Показать всё древо</button><button id="zoomReset">Обычный размер</button><span id="zoomValue">100%</span></div></header>
 		<div class="tree-canvas"><svg xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="2996" height="673" id="svg0" data-root="g452">
 			<rect id="rect2" class="s3" x="0" y="0" width="2996" height="673" />
 			<g aria-label="Поколения схемы" font-family="Georgia, serif" fill="#526a62">
@@ -1156,10 +1180,13 @@ window.addEventListener('DOMContentLoaded', function (){
 	<script>
 (function(){
   const svg=document.getElementById('svg0'), canvas=svg.parentElement, output=document.getElementById('zoomValue'); let scale=1,pan=null; svg.setAttribute('viewBox','0 0 2996 673');
-  function setScale(next){scale=Math.min(2.5,Math.max(.35,next));svg.style.width=(2996*scale)+'px';svg.style.height=(673*scale)+'px';output.textContent=Math.round(scale*100)+'%'}
+  function setScale(next){scale=Math.min(2.5,Math.max(.12,next));svg.style.width=(2996*scale)+'px';svg.style.height=(673*scale)+'px';output.textContent=Math.round(scale*100)+'%'}
   document.getElementById('zoomIn').onclick=()=>setScale(scale*1.2);
   document.getElementById('zoomOut').onclick=()=>setScale(scale/1.2);
   document.getElementById('zoomReset').onclick=()=>setScale(1);
+  document.getElementById('zoomFit').onclick=()=>{setScale(Math.min(canvas.clientWidth/2996,canvas.clientHeight/673));canvas.scrollLeft=0;canvas.scrollTop=0};
+  function centerRoot(){const r=document.getElementById(svg.dataset.root);if(!r||!r.getBBox)return;const b=r.getBBox();canvas.scrollLeft=Math.max(0,(b.x+b.width/2)*scale-canvas.clientWidth/2);canvas.scrollTop=Math.max(0,(b.y+b.height/2)*scale-canvas.clientHeight/2)}
+  window.addEventListener('load',centerRoot);
   svg.addEventListener('pointerdown',function(e){if(e.button!==0||e.target.closest('[data-id],[data-ref],[data-link]'))return;pan={x:e.clientX,y:e.clientY,left:canvas.scrollLeft,top:canvas.scrollTop};svg.setPointerCapture(e.pointerId);svg.style.cursor='grabbing'});
   svg.addEventListener('pointermove',function(e){if(!pan)return;canvas.scrollLeft=pan.left+pan.x-e.clientX;canvas.scrollTop=pan.top+pan.y-e.clientY});
   function stop(){pan=null;svg.style.cursor=''} svg.addEventListener('pointerup',stop);svg.addEventListener('pointercancel',stop);
