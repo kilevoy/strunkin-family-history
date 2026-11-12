@@ -17,7 +17,7 @@
   .hero-rule{height:2px;width:45px;background:#d7ac6d;margin-bottom:20px}
   .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.76rem;color:#e7d9ba}
   .hero h1{font:clamp(2.2rem,5vw,3.6rem)/1.1 var(--serif);font-weight:400;margin:.35em 0}
-  .hero p{font:1.08rem/1.6 var(--serif);max-width:680px;color:#ecf0e8;margin:0}
+  .hero p{font:1.08rem/1.6 var(--serif);max-width:720px;color:#ecf0e8;margin:0}
   nav{position:sticky;top:0;background:rgba(248,248,242,.97);border-bottom:1px solid var(--line);z-index:5;backdrop-filter:blur(8px)}
   nav .wrap{display:flex;align-items:center;gap:22px;overflow:auto;padding:12px 20px;white-space:nowrap}
   nav a{text-decoration:none;font-size:.9rem;color:var(--ink);flex:none}
@@ -30,16 +30,33 @@
   .section-kicker{display:block;margin-bottom:10px;color:#9c6c36;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
   .section h2{font:1.9rem/1.2 var(--serif);font-weight:400;margin:0 0 10px}
   .subtle{color:var(--muted);margin:0 0 20px}
-  .album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+  .album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
   .photo-card{margin:0;background:var(--card);border:1px solid #d9e1dc;border-radius:10px;overflow:hidden;box-shadow:0 7px 24px #1d37300a;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
   .photo-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px #1d373014}
   .photo-thumb{position:relative;background:#eceae1;cursor:zoom-in;overflow:hidden}
   .photo-thumb img{display:block;width:100%;height:300px;object-fit:cover;object-position:center 22%}
   .photo-thumb.contain img{object-fit:contain;background:#e8e5da}
   .photo-badge{position:absolute;top:10px;left:10px;background:rgba(33,63,65,.86);color:#f3e5c7;font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:4px 9px;border-radius:4px}
-  .photo-card figcaption{padding:14px 16px;font-size:.92rem;color:var(--ink)}
+  .photo-card figcaption{padding:14px 16px 10px;font-size:.92rem;color:var(--ink)}
   .photo-card figcaption strong{display:block;font-family:var(--serif);font-size:1rem;color:var(--green);margin-bottom:4px}
   .photo-card figcaption small{display:block;color:var(--muted);margin-top:6px;font-size:.82rem}
+
+  /* Comments block inside card */
+  .photo-comments{border-top:1px solid #e6ebe7;padding:10px 16px 14px;background:#faf9f4;font-size:.86rem}
+  .comment-toggle{background:none;border:1px solid #c9d4cd;border-radius:6px;padding:6px 11px;font:600 .82rem var(--sans);color:var(--green);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .15s}
+  .comment-toggle:hover{background:var(--sage)}
+  .comment-list{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .comment-item{background:#fff;border:1px solid #e3e8e4;border-radius:6px;padding:8px 10px;line-height:1.45}
+  .comment-item .c-meta{font-size:.77rem;color:var(--muted);margin-bottom:2px}
+  .comment-item .c-meta b{color:var(--green)}
+  .comment-form{margin-top:10px;display:none;flex-direction:column;gap:8px}
+  .comment-form.open{display:flex}
+  .comment-form input,.comment-form textarea{width:100%;padding:8px 10px;border:1px solid #cbd5cf;border-radius:6px;font:inherit;font-size:.86rem;background:#fff;color:var(--ink)}
+  .comment-form textarea{resize:vertical;min-height:66px}
+  .comment-form button{align-self:flex-start;background:var(--green);color:#fff;border:none;border-radius:6px;padding:7px 14px;font:600 .83rem var(--sans);cursor:pointer}
+  .comment-form button:disabled{opacity:.6;cursor:wait}
+  .comment-status{font-size:.78rem;color:#7a5a32;margin-top:2px}
+
   .footer{border-top:1px solid var(--line);padding:25px 22px 40px;color:var(--muted);font-size:.88rem;background:#e8ede7;margin-top:32px}
   .footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
@@ -47,7 +64,7 @@
   .lightbox{position:fixed;inset:0;background:rgba(16,28,30,.92);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
   .lightbox.open{display:flex}
   .lightbox-inner{max-width:min(980px,100%);max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:12px}
-  .lightbox-inner img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:6px;background:#111}
+  .lightbox-inner img{max-width:100%;max-height:76vh;object-fit:contain;border-radius:6px;background:#111}
   .lightbox-caption{color:#f2eee4;text-align:center;font-size:.96rem;max-width:780px}
   .lb-btn{position:fixed;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;display:grid;place-items:center}
   .lb-btn:hover{background:rgba(255,255,255,.26)}
@@ -63,7 +80,7 @@
     <div class="hero-rule" aria-hidden="true"></div>
     <div class="eyebrow">Семейный архив · Фотогалерея</div>
     <h1>Фотоальбом семьи Стрункиных</h1>
-    <p>Подлинные семейные портреты, военные снимки 1944–1946 годов и мемориальные фотографии рода. Нажмите на любой снимок, чтобы открыть его полностью.</p>
+    <p>Подлинные семейные портреты, военные снимки 1944–1946 годов и мемориальные фотографии рода. Нажмите на любой снимок, чтобы увеличить его, или оставьте подсказку под фото, если узнали родных.</p>
   </div>
 </header>
 
@@ -85,29 +102,29 @@
     <section class="section" id="portraits">
       <span class="section-kicker">01 / Старшее поколение и семья</span>
       <h2>Главные семейные портреты</h2>
-      <p class="subtle">Портреты Александра Васильевича и Зинаиды Ефимовны Стрункиных и общий снимок с детьми.</p>
+      <p class="subtle">Портреты Александра Васильевича и Зинаиды Ефимовны Стрункиных и общие семейные снимки.</p>
       <div class="album-grid">
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="av-main">
           <div class="photo-thumb"><span class="photo-badge">Главный портрет</span><img src="assets/strunkin_av_main.jpg" alt="Александр Васильевич Стрункин (главный портрет)"></div>
           <figcaption><strong>Александр Васильевич Стрункин</strong>Род. 14.11.1924, с. Речное. Главный семейный портрет.<small>Семейный архив</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="ze-main">
           <div class="photo-thumb"><span class="photo-badge">Главный портрет</span><img src="assets/strunkina_ze_main.jpg" alt="Зинаида Ефимовна Стрункина (урожд. Тараканова)"></div>
           <figcaption><strong>Зинаида Ефимовна Стрункина</strong>Урожд. Тараканова, род. 14.10.1928. Главный семейный портрет.<small>Семейный архив</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="family-tree-ny">
           <div class="photo-thumb"><span class="photo-badge">Кон. 1950-х</span><img src="assets/strunkiny_family_tree_photo.jpg" alt="Семья Стрункиных у новогодней ёлки"></div>
           <figcaption><strong>Семья Стрункиных у новогодней ёлки</strong>Слева Валентина, сидит Александр Васильевич, сзади Владимир, сидит Зинаида Ефимовна с Татьяной на коленях.<small>г. Челябинск · Источник S80</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="ze-daughters">
           <div class="photo-thumb"><span class="photo-badge">Сер. 1950-х</span><img src="assets/strunkina_ze_daughters.jpg" alt="Зинаида Ефимовна Стрункина с дочерьми Татьяной и Валентиной"></div>
           <figcaption><strong>Зинаида Ефимовна с дочерьми</strong>Зинаида Ефимовна Стрункина с Татьяной (слева) и Валентиной (справа) в одинаковых платьях с куклами.<small>г. Челябинск · Источник S81</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="av-young">
           <div class="photo-thumb"><span class="photo-badge">Послевоенный портрет</span><img src="assets/strunkin_av_young.jpg" alt="Александр Васильевич Стрункин (послевоенный портрет)"></div>
           <figcaption><strong>Александр Васильевич Стрункин</strong>Студийный портрет послевоенных лет.<small>Семейный архив</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="av-yard">
           <div class="photo-thumb contain"><span class="photo-badge">1950-е гг. · Двор</span><img src="assets/strunkin_av_yard_children.jpg" alt="Александр Васильевич Стрункин с детьми во дворе"></div>
           <figcaption><strong>А. В. Стрункин с детьми во дворе</strong>Александр Васильевич (сидит на ограде справа) среди детей во дворе.<small>г. Челябинск · Источник S83</small></figcaption>
         </figure>
@@ -119,19 +136,19 @@
       <h2>Военная служба (1944–1946 гг.)</h2>
       <p class="subtle">Фотодокументы периода службы Александра Васильевича в морской авиации: Моздок, ст. Ново-Осетинская и Лиелупе.</p>
       <div class="album-grid">
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="av-1944-mozdok">
           <div class="photo-thumb"><span class="photo-badge">1944 г. · Моздок</span><img src="assets/Стрункин_Александр_Васильевич_1944_ВМФ_Моздок.jpg" alt="Александр Васильевич Стрункин в форме ВМФ, 1944 год"></div>
           <figcaption><strong>А. В. Стрункин в форме ВМФ</strong>Период обучения при ВОК ВВС ВМФ в г. Моздоке (авиационный техник).<small>Источник S75</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="av-1944-novo-osetinskaya">
           <div class="photo-thumb contain"><span class="photo-badge">1944 г. · Ново-Осетинская</span><img src="assets/strunkin_av_1944_novo_osetinskaya.jpg" alt="Групповое фото ВВС ВМФ, 1944 год, ст. Ново-Осетинская"></div>
           <figcaption><strong>Подразделение ВВС ВМФ СССР</strong>Подпись на фото: «1944 год, Ново-Осетинская» (близ г. Моздока). Предположительно А. В. Стрункин стоит 3-й слева в верхнем ряду.<small>Источник S79</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="av-1946-lielupe">
           <div class="photo-thumb"><span class="photo-badge">Дек. 1946 г. · Лиелупе</span><img src="assets/strunkin_av_1946_lielupe.jpg" alt="А. В. Стрункин в шинели и фуражке ВМФ, декабрь 1946 г."></div>
           <figcaption><strong>А. В. Стрункин на Рижском взморье</strong>В двубортной шинели и фуражке ВМФ. Санаторий ПрибВО, ст. Лиелупе (Латвия), декабрь 1946 г.<small>Источник S78</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="av-1946-lielupe-back">
           <div class="photo-thumb contain"><span class="photo-badge">Оборот фото · 1946 г.</span><img src="assets/strunkin_av_1946_lielupe_back.jpg" alt="Дарственная надпись на обороте фото декабря 1946 г."></div>
           <figcaption><strong>Автограф брата сестре Оле</strong>«На память сестре Оле от брата Александра декабрь 1946 г. санаторий ПрибВО ст. Лиелупе Рижское взморье АВСтрункин».<small>Источник S78 (Класс А)</small></figcaption>
         </figure>
@@ -143,19 +160,19 @@
       <h2>Село Речное и мемориал</h2>
       <p class="subtle">Портреты и памятники старших ветвей рода Стрункиных в селе Речном.</p>
       <div class="album-grid">
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="ivan-rechnoe-children">
           <div class="photo-thumb contain"><span class="photo-badge">Село Речное · до 1964 г.</span><img src="assets/ivan_merkurievich_children_rechnoe.jpg" alt="Иван Меркурьевич Стрункин с детьми у дома в селе Речном"></div>
           <figcaption><strong>Иван Меркурьевич Стрункин с детьми</strong>Тот самый «дед Иван с бородой» (ок. 1886–1964) в окружении детей у плетня и избы.<small>Село Речное · Источник S82</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="ignatiy-portrait">
           <div class="photo-thumb"><span class="photo-badge">1892–1957</span><img src="assets/Стрункин_Игнатий_Меркурьевич_1892_1957_портрет_Речное.jpg" alt="Портрет Игнатия Меркурьевича Стрункина"></div>
           <figcaption><strong>Игнатий Меркурьевич Стрункин</strong>1892–1957. Герой Первой мировой войны, ефрейтор 1-го Заамурского полка.<small>Село Речное</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="ivan-klavdiya-monument">
           <div class="photo-thumb"><span class="photo-badge">Село Речное</span><img src="assets/Стрункины_Иван_Меркурьевич_и_Клавдия_Артемьевна_памятник_Речное.jpg" alt="Памятник Ивану Меркурьевичу и Клавдии Артемьевне Стрункиным"></div>
           <figcaption><strong>Иван Меркурьевич и Клавдия Артемьевна</strong>Памятник в селе Речном.<small>Село Речное</small></figcaption>
         </figure>
-        <figure class="photo-card">
+        <figure class="photo-card" data-photo-id="ivan-klavdiya-oval">
           <div class="photo-thumb"><span class="photo-badge">Портретный овал</span><img src="assets/Стрункины_Иван_Меркурьевич_и_Клавдия_Артемьевна_портрет.jpg" alt="Портреты Ивана и Клавдии Стрункиных на памятнике"></div>
           <figcaption><strong>Портретный овал</strong>Иван Меркурьевич и Клавдия Артемьевна Стрункины.<small>Село Речное</small></figcaption>
         </figure>
@@ -182,12 +199,16 @@
 </div>
 
 <script>
+  // Вставьте сюда URL развёрнутого Google Apps Script, чтобы комментарии были общими для всех посетителей:
+  const COMMENTS_API_URL = '';
+
   const cards = Array.from(document.querySelectorAll('.photo-card'));
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
   let cur = 0;
 
+  // Lightbox
   function show(idx) {
     cur = (idx + cards.length) % cards.length;
     const img = cards[cur].querySelector('img');
@@ -214,7 +235,125 @@
     if (e.key === 'ArrowLeft') show(cur - 1);
     if (e.key === 'ArrowRight') show(cur + 1);
   });
+
+  // Comments UI per card
+  const LOCAL_KEY = 'strunkiny_album_comments_v1';
+  const commentsByPhoto = {};
+
+  function loadLocalComments() {
+    try { return JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}'); }
+    catch (_) { return {}; }
+  }
+  function saveLocalComment(photoId, item) {
+    const data = loadLocalComments();
+    data[photoId] = data[photoId] || [];
+    data[photoId].push(item);
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(data));
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  function renderCardComments(card) {
+    const photoId = card.dataset.photoId;
+    const list = card.querySelector('.comment-list');
+    const toggle = card.querySelector('.comment-toggle');
+    const items = commentsByPhoto[photoId] || [];
+    toggle.textContent = items.length ? `💬 Написать, кто на фото (${items.length})` : '✏️ Написать, кто на фото';
+    list.innerHTML = items.map(it =>
+      `<li class="comment-item"><div class="c-meta"><b>${escHtml(it.author)}</b> · ${escHtml(it.date)}</div><div>${escHtml(it.text)}</div></li>`
+    ).join('');
+  }
+
+  cards.forEach(card => {
+    const photoId = card.dataset.photoId;
+    const box = document.createElement('div');
+    box.className = 'photo-comments';
+    box.innerHTML = `
+      <button type="button" class="comment-toggle">✏️ Написать, кто на фото</button>
+      <ul class="comment-list"></ul>
+      <form class="comment-form">
+        <input type="text" name="author" placeholder="Ваше имя (например: Татьяна, Андрей)" maxlength="60" required>
+        <textarea name="text" placeholder="Кто на фото (например: 4-я слева — Валентина, 1958 г.)" maxlength="600" required></textarea>
+        <button type="submit">Отправить комментарий</button>
+        <div class="comment-status"></div>
+      </form>
+    `;
+    card.appendChild(box);
+
+    const toggle = box.querySelector('.comment-toggle');
+    const form = box.querySelector('.comment-form');
+    const statusEl = box.querySelector('.comment-status');
+    const btn = form.querySelector('button[type="submit"]');
+
+    toggle.addEventListener('click', () => form.classList.toggle('open'));
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const author = form.author.value.trim();
+      const text = form.text.value.trim();
+      if (!author || !text) return;
+
+      btn.disabled = true;
+      statusEl.textContent = 'Отправка...';
+
+      if (COMMENTS_API_URL) {
+        try {
+          const resp = await fetch(COMMENTS_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ photoId, author, text })
+          });
+          const json = await resp.json();
+          if (json && json.ok && json.comment) {
+            commentsByPhoto[photoId] = commentsByPhoto[photoId] || [];
+            commentsByPhoto[photoId].push(json.comment);
+            renderCardComments(card);
+            form.text.value = '';
+            statusEl.textContent = 'Сохранено! Комментарий теперь видят все.';
+          } else {
+            statusEl.textContent = 'Не удалось сохранить. Попробуйте ещё раз.';
+          }
+        } catch (err) {
+          statusEl.textContent = 'Ошибка сети при отправке.';
+        } finally {
+          btn.disabled = false;
+        }
+      } else {
+        const now = new Date();
+        const pad = n => String(n).padStart(2, '0');
+        const dateStr = `${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+        const item = { photoId, author, text, date: dateStr };
+        saveLocalComment(photoId, item);
+        commentsByPhoto[photoId] = commentsByPhoto[photoId] || [];
+        commentsByPhoto[photoId].push(item);
+        renderCardComments(card);
+        form.text.value = '';
+        btn.disabled = false;
+        statusEl.textContent = 'Сохранено локально в этом браузере. Чтобы комментарии были общими для всей семьи, подключите Google Таблицу.';
+      }
+    });
+  });
+
+  (async function initComments() {
+    if (COMMENTS_API_URL) {
+      try {
+        const resp = await fetch(COMMENTS_API_URL);
+        const json = await resp.json();
+        if (json && json.ok && Array.isArray(json.comments)) {
+          json.comments.forEach(c => {
+            commentsByPhoto[c.photoId] = commentsByPhoto[c.photoId] || [];
+            commentsByPhoto[c.photoId].push(c);
+          });
+        }
+      } catch (_) {}
+    } else {
+      const local = loadLocalComments();
+      Object.keys(local).forEach(k => { commentsByPhoto[k] = local[k]; });
+    }
+    cards.forEach(renderCardComments);
+  })();
 </script>
 </body>
 </html>
-
