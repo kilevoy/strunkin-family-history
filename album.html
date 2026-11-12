@@ -32,20 +32,26 @@
   .section-kicker{display:block;margin-bottom:10px;color:#9c6c36;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
   .section h2{font:1.9rem/1.2 var(--serif);font-weight:400;margin:0 0 10px}
   .subtle{color:var(--muted);margin:0 0 20px}
-  .album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;align-items:start}
-  .photo-card{margin:0;background:var(--card);border:1px solid #d9e1dc;border-radius:10px;overflow:hidden;box-shadow:0 7px 24px #1d37300a;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
-  .photo-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px #1d373014}
-  .photo-thumb{position:relative;background:#eceae1;cursor:zoom-in;overflow:hidden}
-  .photo-thumb img{display:block;width:100%;height:300px;object-fit:cover;object-position:center 22%}
-  .photo-thumb.contain img{object-fit:contain;background:#e8e5da}
-  .photo-badge{position:absolute;top:10px;left:10px;background:rgba(33,63,65,.86);color:#f3e5c7;font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:4px 9px;border-radius:4px}
-  .photo-card figcaption{padding:14px 16px 10px;font-size:.92rem;color:var(--ink)}
-  .photo-card figcaption strong{display:block;font-family:var(--serif);font-size:1rem;color:var(--green);margin-bottom:4px}
-  .photo-card figcaption small{display:block;color:var(--muted);margin-top:6px;font-size:.82rem}
+  .album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px;align-items:stretch}
+  .photo-card{margin:0;background:var(--card);border:1px solid #d9e1dc;border-radius:8px;overflow:hidden;box-shadow:0 4px 14px #1d37300a;transition:transform .16s,box-shadow .16s}
+  .photo-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px #1d37301c}
+  .photo-thumb{position:relative;background:#e8e5da;cursor:zoom-in;overflow:hidden}
+  .photo-thumb img{display:block;width:100%;height:175px;object-fit:cover;object-position:center 22%}
+  .photo-thumb.contain img{object-fit:cover;object-position:center 25%}
+  .photo-badge,.photo-card figcaption{display:none}
+  .thumb-note-count{position:absolute;right:7px;bottom:7px;background:rgba(33,63,65,.88);color:#f3e5c7;font-size:.72rem;font-weight:600;padding:2px 7px;border-radius:12px;pointer-events:none}
 
-  /* Comments block inside card */
-  .photo-comments{border-top:1px solid #e6ebe7;padding:10px 16px 14px;background:#faf9f4;font-size:.86rem}
-  .comment-toggle{background:none;border:1px solid #c9d4cd;border-radius:6px;padding:6px 11px;font:600 .82rem var(--sans);color:var(--green);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .15s}
+  /* Lightbox & info inside lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(16,28,30,.94);display:none;align-items:center;justify-content:center;padding:24px 16px;z-index:50;overflow-y:auto}
+  .lightbox.open{display:flex}
+  .lightbox-inner{width:min(820px,100%);margin:auto;display:flex;flex-direction:column;align-items:center;gap:14px}
+  .lightbox-inner img{max-width:100%;max-height:68vh;object-fit:contain;border-radius:6px;background:#111}
+  .lightbox-panel{width:100%;background:#faf9f4;color:var(--ink);border-radius:10px;padding:14px 18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .lightbox-caption{font-size:.95rem;line-height:1.5;margin-bottom:8px}
+  .lightbox-caption strong{display:block;font-family:var(--serif);font-size:1.05rem;color:var(--green);margin-bottom:3px}
+  .lightbox-caption small{display:block;color:var(--muted);margin-top:4px;font-size:.82rem}
+  .lb-comments{border-top:1px solid #e3e8e4;padding-top:10px;margin-top:8px;font-size:.86rem}
+  .comment-toggle{background:#fff;border:1px solid #c9d4cd;border-radius:6px;padding:6px 12px;font:600 .83rem var(--sans);color:var(--green);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
   .comment-toggle:hover{background:var(--sage)}
   .comment-list{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
   .comment-item{background:#fff;border:1px solid #e3e8e4;border-radius:6px;padding:8px 10px;line-height:1.45}
@@ -53,27 +59,21 @@
   .comment-item .c-meta b{color:var(--green)}
   .comment-form{margin-top:10px;display:none;flex-direction:column;gap:8px}
   .comment-form.open{display:flex}
-  .comment-form input,.comment-form textarea{width:100%;padding:8px 10px;border:1px solid #cbd5cf;border-radius:6px;font:inherit;font-size:.86rem;background:#fff;color:var(--ink)}
+  .comment-form input,.comment-form textarea{width:100%;padding:8px 10px;border:1px solid #cbd5cf;border-radius:6px;font:inherit;font-size:.88rem;background:#fff;color:var(--ink)}
   .comment-form textarea{resize:vertical;min-height:66px}
-  .comment-form button{align-self:flex-start;background:var(--green);color:#fff;border:none;border-radius:6px;padding:7px 14px;font:600 .83rem var(--sans);cursor:pointer}
+  .comment-form button{align-self:flex-start;background:var(--green);color:#fff;border:none;border-radius:6px;padding:7px 14px;font:600 .84rem var(--sans);cursor:pointer}
   .comment-form button:disabled{opacity:.6;cursor:wait}
-  .comment-status{font-size:.78rem;color:#7a5a32;margin-top:2px}
+  .comment-status{font-size:.8rem;color:var(--green);font-weight:600;margin-top:2px}
 
   .footer{border-top:1px solid var(--line);padding:25px 22px 40px;color:var(--muted);font-size:.88rem;background:#e8ede7;margin-top:32px}
   .footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-  /* Lightbox */
-  .lightbox{position:fixed;inset:0;background:rgba(16,28,30,.92);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
-  .lightbox.open{display:flex}
-  .lightbox-inner{max-width:min(980px,100%);max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:12px}
-  .lightbox-inner img{max-width:100%;max-height:76vh;object-fit:contain;border-radius:6px;background:#111}
-  .lightbox-caption{color:#f2eee4;text-align:center;font-size:.96rem;max-width:780px}
-  .lb-btn{position:fixed;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;display:grid;place-items:center}
-  .lb-btn:hover{background:rgba(255,255,255,.26)}
-  .lb-close{top:18px;right:18px}
-  .lb-prev{left:16px;top:50%;transform:translateY(-50%)}
-  .lb-next{right:16px;top:50%;transform:translateY(-50%)}
-  @media(max-width:720px){.nav-home span{display:none}.photo-thumb img{height:270px}.lb-prev,.lb-next{width:38px;height:38px}}
+  .lb-btn{position:fixed;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;display:grid;place-items:center;z-index:55}
+  .lb-btn:hover{background:rgba(255,255,255,.28)}
+  .lb-close{top:16px;right:16px}
+  .lb-prev{left:14px;top:50%;transform:translateY(-50%)}
+  .lb-next{right:14px;top:50%;transform:translateY(-50%)}
+  @media(max-width:720px){.nav-home span{display:none}.album-grid{grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:7px}.photo-thumb img{height:140px}.lb-prev,.lb-next{width:36px;height:36px}}
 </style>
 </head>
 <body>
@@ -545,53 +545,44 @@
   <button class="lb-btn lb-prev" id="lbPrev" aria-label="Предыдущее фото">‹</button>
   <div class="lightbox-inner">
     <img id="lbImg" src="" alt="">
-    <div class="lightbox-caption" id="lbCap"></div>
+    <div class="lightbox-panel">
+      <div class="lightbox-caption" id="lbCap"></div>
+      <div class="lb-comments">
+        <button type="button" class="comment-toggle" id="lbToggleForm">✏️ Добавить информацию о фото</button>
+        <ul class="comment-list" id="lbCommentList"></ul>
+        <form class="comment-form" id="lbCommentForm" novalidate>
+          <input type="text" name="author" placeholder="Ваше имя (необязательно)" maxlength="60">
+          <textarea name="text" placeholder="Кто на снимке, год или история..." maxlength="600"></textarea>
+          <button type="submit">Сохранить</button>
+          <div class="comment-status" id="lbCommentStatus"></div>
+        </form>
+      </div>
+    </div>
   </div>
   <button class="lb-btn lb-next" id="lbNext" aria-label="Следующее фото">›</button>
 </div>
 
 <script>
-  // Вставьте сюда URL развёрнутого Google Apps Script, чтобы комментарии были общими для всех посетителей:
   const COMMENTS_API_URL = '';
+  const LOCAL_KEY = 'strunkiny_album_comments_v1';
+  const AUTHOR_KEY = 'strunkiny_album_author_v1';
+  const commentsByPhoto = {};
+  let savedAuthor = '';
+  try { savedAuthor = localStorage.getItem(AUTHOR_KEY) || ''; } catch (_) {}
 
   const cards = Array.from(document.querySelectorAll('.photo-card'));
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
+  const lbToggleForm = document.getElementById('lbToggleForm');
+  const lbCommentList = document.getElementById('lbCommentList');
+  const lbCommentForm = document.getElementById('lbCommentForm');
+  const lbCommentStatus = document.getElementById('lbCommentStatus');
   let cur = 0;
 
-  // Lightbox
-  function show(idx) {
-    cur = (idx + cards.length) % cards.length;
-    const img = cards[cur].querySelector('img');
-    const title = cards[cur].querySelector('figcaption strong')?.textContent || '';
-    const desc = cards[cur].querySelector('figcaption')?.textContent.replace(title, '').trim() || '';
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    lbCap.innerHTML = '<strong>' + title + '</strong><br>' + desc;
-    lb.classList.add('open');
-    lb.setAttribute('aria-hidden', 'false');
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   }
-  function hide() {
-    lb.classList.remove('open');
-    lb.setAttribute('aria-hidden', 'true');
-  }
-  cards.forEach((c, i) => c.querySelector('.photo-thumb').addEventListener('click', () => show(i)));
-  document.getElementById('lbClose').addEventListener('click', hide);
-  document.getElementById('lbPrev').addEventListener('click', () => show(cur - 1));
-  document.getElementById('lbNext').addEventListener('click', () => show(cur + 1));
-  lb.addEventListener('click', (e) => { if (e.target === lb) hide(); });
-  document.addEventListener('keydown', (e) => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') hide();
-    if (e.key === 'ArrowLeft') show(cur - 1);
-    if (e.key === 'ArrowRight') show(cur + 1);
-  });
-
-  // Comments UI per card
-  const LOCAL_KEY = 'strunkiny_album_comments_v1';
-  const commentsByPhoto = {};
-
   function loadLocalComments() {
     try { return JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}'); }
     catch (_) { return {}; }
@@ -603,112 +594,131 @@
     localStorage.setItem(LOCAL_KEY, JSON.stringify(data));
   }
 
-  function escHtml(s) {
-    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  function updateThumbBadge(card) {
+    const photoId = card.dataset.photoId;
+    const count = (commentsByPhoto[photoId] || []).length;
+    const thumb = card.querySelector('.photo-thumb');
+    let badge = thumb.querySelector('.thumb-note-count');
+    if (count > 0) {
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'thumb-note-count';
+        thumb.appendChild(badge);
+      }
+      badge.textContent = '💬 ' + count;
+    } else if (badge) {
+      badge.remove();
+    }
   }
 
-  function renderCardComments(card) {
-    const photoId = card.dataset.photoId;
-    const list = card.querySelector('.comment-list');
-    const toggle = card.querySelector('.comment-toggle');
+  function renderLightboxComments(photoId) {
     const items = commentsByPhoto[photoId] || [];
-    toggle.textContent = items.length ? `💬 Информация о фото (${items.length})` : '✏️ Добавить информацию о фото';
-    list.innerHTML = items.map(it =>
+    lbToggleForm.textContent = items.length ? `✏️ Добавить информацию (${items.length})` : '✏️ Добавить информацию о фото';
+    lbCommentList.innerHTML = items.map(it =>
       `<li class="comment-item"><div class="c-meta"><b>${escHtml(it.author)}</b> · ${escHtml(it.date)}</div><div>${escHtml(it.text)}</div></li>`
     ).join('');
   }
 
-  const AUTHOR_KEY = 'strunkiny_album_author_v1';
-  let savedAuthor = '';
-  try { savedAuthor = localStorage.getItem(AUTHOR_KEY) || ''; } catch (_) {}
-
-  cards.forEach(card => {
+  function show(idx) {
+    cur = (idx + cards.length) % cards.length;
+    const card = cards[cur];
     const photoId = card.dataset.photoId;
-    const box = document.createElement('div');
-    box.className = 'photo-comments';
-    box.innerHTML = `
-      <button type="button" class="comment-toggle">✏️ Добавить информацию о фото</button>
-      <ul class="comment-list"></ul>
-      <form class="comment-form" novalidate>
-        <input type="text" name="author" placeholder="Ваше имя (необязательно)" maxlength="60">
-        <textarea name="text" placeholder="Кто на снимке, год или история..." maxlength="600"></textarea>
-        <button type="submit">Сохранить</button>
-        <div class="comment-status"></div>
-      </form>
-    `;
-    card.appendChild(box);
+    const img = card.querySelector('img');
+    const fig = card.querySelector('figcaption');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCap.innerHTML = fig ? fig.innerHTML : '';
+    lbCommentForm.classList.remove('open');
+    lbCommentStatus.textContent = '';
+    if (savedAuthor) lbCommentForm.author.value = savedAuthor;
+    renderLightboxComments(photoId);
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    lb.scrollTop = 0;
+  }
+  function hide() {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+  }
 
-    const toggle = box.querySelector('.comment-toggle');
-    const form = box.querySelector('.comment-form');
-    const statusEl = box.querySelector('.comment-status');
-    const btn = form.querySelector('button[type="submit"]');
-    if (savedAuthor) form.author.value = savedAuthor;
+  cards.forEach((c, i) => c.querySelector('.photo-thumb').addEventListener('click', () => show(i)));
+  document.getElementById('lbClose').addEventListener('click', hide);
+  document.getElementById('lbPrev').addEventListener('click', () => show(cur - 1));
+  document.getElementById('lbNext').addEventListener('click', () => show(cur + 1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) hide(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === 'ArrowLeft' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') show(cur - 1);
+    if (e.key === 'ArrowRight' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') show(cur + 1);
+  });
 
-    toggle.addEventListener('click', () => {
-      form.classList.toggle('open');
-      if (form.classList.contains('open')) {
-        if (savedAuthor && !form.author.value) form.author.value = savedAuthor;
-        form.text.focus();
-      }
-    });
+  lbToggleForm.addEventListener('click', () => {
+    lbCommentForm.classList.toggle('open');
+    if (lbCommentForm.classList.contains('open')) {
+      if (savedAuthor && !lbCommentForm.author.value) lbCommentForm.author.value = savedAuthor;
+      lbCommentForm.text.focus();
+    }
+  });
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const rawAuthor = form.author.value.trim();
-      const author = rawAuthor || 'Семья';
-      const text = form.text.value.trim();
-      if (!text) {
-        statusEl.textContent = 'Напишите текст подписи.';
-        form.text.focus();
-        return;
-      }
-      if (rawAuthor) {
-        savedAuthor = rawAuthor;
-        try { localStorage.setItem(AUTHOR_KEY, rawAuthor); } catch (_) {}
-        document.querySelectorAll('.comment-form input[name="author"]').forEach(inp => {
-          if (!inp.value.trim()) inp.value = rawAuthor;
+  lbCommentForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const card = cards[cur];
+    const photoId = card.dataset.photoId;
+    const rawAuthor = lbCommentForm.author.value.trim();
+    const author = rawAuthor || 'Семья';
+    const text = lbCommentForm.text.value.trim();
+    if (!text) {
+      lbCommentStatus.textContent = 'Напишите текст подписи.';
+      lbCommentForm.text.focus();
+      return;
+    }
+    if (rawAuthor) {
+      savedAuthor = rawAuthor;
+      try { localStorage.setItem(AUTHOR_KEY, rawAuthor); } catch (_) {}
+    }
+
+    const btn = lbCommentForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    lbCommentStatus.textContent = '';
+
+    if (COMMENTS_API_URL) {
+      try {
+        const resp = await fetch(COMMENTS_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ photoId, author, text })
         });
-      }
-
-      btn.disabled = true;
-      statusEl.textContent = '';
-
-      if (COMMENTS_API_URL) {
-        try {
-          const resp = await fetch(COMMENTS_API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify({ photoId, author, text })
-          });
-          const json = await resp.json();
-          if (json && json.ok && json.comment) {
-            commentsByPhoto[photoId] = commentsByPhoto[photoId] || [];
-            commentsByPhoto[photoId].push(json.comment);
-            renderCardComments(card);
-            form.text.value = '';
-            statusEl.textContent = 'Сохранено ✓';
-          } else {
-            statusEl.textContent = 'Не удалось сохранить.';
-          }
-        } catch (err) {
-          statusEl.textContent = 'Ошибка сети.';
-        } finally {
-          btn.disabled = false;
+        const json = await resp.json();
+        if (json && json.ok && json.comment) {
+          commentsByPhoto[photoId] = commentsByPhoto[photoId] || [];
+          commentsByPhoto[photoId].push(json.comment);
+          renderLightboxComments(photoId);
+          updateThumbBadge(card);
+          lbCommentForm.text.value = '';
+          lbCommentStatus.textContent = 'Сохранено ✓';
+        } else {
+          lbCommentStatus.textContent = 'Не удалось сохранить.';
         }
-      } else {
-        const now = new Date();
-        const pad = n => String(n).padStart(2, '0');
-        const dateStr = `${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
-        const item = { photoId, author, text, date: dateStr };
-        saveLocalComment(photoId, item);
-        commentsByPhoto[photoId] = commentsByPhoto[photoId] || [];
-        commentsByPhoto[photoId].push(item);
-        renderCardComments(card);
-        form.text.value = '';
+      } catch (_) {
+        lbCommentStatus.textContent = 'Ошибка сети.';
+      } finally {
         btn.disabled = false;
-        statusEl.textContent = 'Сохранено ✓';
       }
-    });
+    } else {
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const dateStr = `${pad(now.getDate())}.${pad(now.getMonth()+1)}.${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      const item = { photoId, author, text, date: dateStr };
+      saveLocalComment(photoId, item);
+      commentsByPhoto[photoId] = commentsByPhoto[photoId] || [];
+      commentsByPhoto[photoId].push(item);
+      renderLightboxComments(photoId);
+      updateThumbBadge(card);
+      lbCommentForm.text.value = '';
+      btn.disabled = false;
+      lbCommentStatus.textContent = 'Сохранено ✓';
+    }
   });
 
   (async function initComments() {
@@ -727,7 +737,7 @@
       const local = loadLocalComments();
       Object.keys(local).forEach(k => { commentsByPhoto[k] = local[k]; });
     }
-    cards.forEach(renderCardComments);
+    cards.forEach(updateThumbBadge);
   })();
 </script>
 </body>
