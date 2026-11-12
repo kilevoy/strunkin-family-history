@@ -623,10 +623,10 @@
         <button type="button" class="comment-toggle" id="lbToggleForm">Записать заметку к этому фото</button>
         <ul class="comment-list" id="lbCommentList"></ul>
         <form class="comment-form" id="lbCommentForm" novalidate>
-          <p class="comment-note">Заметка сохранится только на этом телефоне или компьютере — другие родные её не увидят. Чтобы сообщить семье, кто на снимке, напишите в общем альбоме Google Фото (кнопка вверху страницы).</p>
+          <p class="comment-note">Напишите, кто на снимке, какой это год или какая история. Заметка придёт составителю сайта и появится у всех родных после проверки.</p>
           <input type="text" name="author" placeholder="Ваше имя (необязательно)" maxlength="60" aria-label="Ваше имя">
           <textarea name="text" placeholder="Кто на снимке, какой год, что за история..." maxlength="600" aria-label="Текст заметки"></textarea>
-          <button type="submit">Сохранить заметку</button>
+          <button type="submit">Отправить заметку</button>
           <div class="comment-status" id="lbCommentStatus" role="status"></div>
         </form>
       </div>
@@ -639,7 +639,7 @@
   </div>
 </div>
 <script>
-    const COMMENTS_API_URL = '';
+    const COMMENTS_API_URL = 'https://script.google.com/macros/s/AKfycbwp5N5vouGGxtd6RGhVtmAv5NYRsp03VYAv-iuZI_oSWLnjFRph85yZqlMK4Z69dETEXQ/exec';
     const LOCAL_KEY = 'strunkiny_album_comments_v1';
     const AUTHOR_KEY = 'strunkiny_album_author_v1';
     const commentsByPhoto = {};
@@ -689,7 +689,7 @@
 
     function renderLightboxComments(photoId) {
       const items = commentsByPhoto[photoId] || [];
-      lbToggleForm.textContent = items.length ? `Заметки к этому фото (${items.length})` : 'Записать заметку к этому фото';
+      lbToggleForm.textContent = items.length ? `Написать свою заметку (уже есть: ${items.length})` : 'Записать заметку к этому фото';
       lbCommentList.innerHTML = items.map(it =>
         `<li class="comment-item"><div class="c-meta"><b>${escHtml(it.author)}</b> · ${escHtml(it.date)}</div><div>${escHtml(it.text)}</div></li>`
       ).join('');
@@ -766,18 +766,14 @@
             body: JSON.stringify({ photoId, author, text })
           });
           const json = await resp.json();
-          if (json && json.ok && json.comment) {
-            commentsByPhoto[photoId] = commentsByPhoto[photoId] || [];
-            commentsByPhoto[photoId].push(json.comment);
-            renderLightboxComments(photoId);
-            updateThumbBadge(card);
+          if (json && json.ok) {
             lbCommentForm.text.value = '';
-            lbCommentStatus.textContent = 'Сохранено ✓';
+            lbCommentStatus.textContent = 'Спасибо! Заметка отправлена. Она появится у всех после проверки.';
           } else {
-            lbCommentStatus.textContent = 'Не удалось сохранить.';
+            lbCommentStatus.textContent = 'Не удалось отправить. Попробуйте ещё раз чуть позже.';
           }
         } catch (_) {
-          lbCommentStatus.textContent = 'Ошибка сети.';
+          lbCommentStatus.textContent = 'Нет связи с интернетом. Попробуйте ещё раз.';
         } finally {
           btn.disabled = false;
         }
