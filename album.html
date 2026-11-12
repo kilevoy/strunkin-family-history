@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Фотоальбом — История семьи Стрункиных</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Outfit:wght@400;500;600;700&display=swap');
+  :root{--ink:#263a43;--muted:#617175;--paper:#f6f5ef;--card:#fffefa;--line:#d9ded9;--green:#294e50;--sage:#e7eeea;--gold:#b17b3f;--serif:'Merriweather',Georgia,'Times New Roman',serif;--sans:'Outfit',Arial,'Segoe UI',sans-serif}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans)}
+  a{color:var(--green)}
+  .wrap{width:min(1080px,100%);margin:auto}
+  .hero{padding:48px 24px 52px;background:linear-gradient(110deg,#213f41 8%,#31595a 68%,#58716a);color:#fff}
+  .hero-rule{height:2px;width:45px;background:#d7ac6d;margin-bottom:20px}
+  .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.76rem;color:#e7d9ba}
+  .hero h1{font:clamp(2.2rem,5vw,3.6rem)/1.1 var(--serif);font-weight:400;margin:.35em 0}
+  .hero p{font:1.08rem/1.6 var(--serif);max-width:680px;color:#ecf0e8;margin:0}
+  nav{position:sticky;top:0;background:rgba(248,248,242,.97);border-bottom:1px solid var(--line);z-index:5;backdrop-filter:blur(8px)}
+  nav .wrap{display:flex;align-items:center;gap:22px;overflow:auto;padding:12px 20px;white-space:nowrap}
+  nav a{text-decoration:none;font-size:.9rem;color:var(--ink);flex:none}
+  nav a:hover{color:#a46c31}
+  nav a.active{color:var(--green);font-weight:700;border-bottom:2px solid var(--gold);padding-bottom:2px}
+  .nav-home{font-weight:700!important;letter-spacing:.12em;font-size:.75rem!important;color:#294e50!important;margin-right:auto}
+  .nav-home span{font-weight:400;letter-spacing:0;color:#73817c}
+  main{padding:26px 22px 72px}
+  .section{padding-top:46px}
+  .section-kicker{display:block;margin-bottom:10px;color:#9c6c36;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+  .section h2{font:1.9rem/1.2 var(--serif);font-weight:400;margin:0 0 10px}
+  .subtle{color:var(--muted);margin:0 0 20px}
+  .album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+  .photo-card{margin:0;background:var(--card);border:1px solid #d9e1dc;border-radius:10px;overflow:hidden;box-shadow:0 7px 24px #1d37300a;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
+  .photo-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px #1d373014}
+  .photo-thumb{position:relative;background:#eceae1;cursor:zoom-in;overflow:hidden}
+  .photo-thumb img{display:block;width:100%;height:300px;object-fit:cover;object-position:center 22%}
+  .photo-thumb.contain img{object-fit:contain;background:#e8e5da}
+  .photo-badge{position:absolute;top:10px;left:10px;background:rgba(33,63,65,.86);color:#f3e5c7;font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:4px 9px;border-radius:4px}
+  .photo-card figcaption{padding:14px 16px;font-size:.92rem;color:var(--ink)}
+  .photo-card figcaption strong{display:block;font-family:var(--serif);font-size:1rem;color:var(--green);margin-bottom:4px}
+  .photo-card figcaption small{display:block;color:var(--muted);margin-top:6px;font-size:.82rem}
+  .footer{border-top:1px solid var(--line);padding:25px 22px 40px;color:var(--muted);font-size:.88rem;background:#e8ede7;margin-top:32px}
+  .footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(16,28,30,.92);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
+  .lightbox.open{display:flex}
+  .lightbox-inner{max-width:min(980px,100%);max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .lightbox-inner img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:6px;background:#111}
+  .lightbox-caption{color:#f2eee4;text-align:center;font-size:.96rem;max-width:780px}
+  .lb-btn{position:fixed;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;display:grid;place-items:center}
+  .lb-btn:hover{background:rgba(255,255,255,.26)}
+  .lb-close{top:18px;right:18px}
+  .lb-prev{left:16px;top:50%;transform:translateY(-50%)}
+  .lb-next{right:16px;top:50%;transform:translateY(-50%)}
+  @media(max-width:720px){.nav-home span{display:none}.photo-thumb img{height:270px}.lb-prev,.lb-next{width:38px;height:38px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-rule" aria-hidden="true"></div>
+    <div class="eyebrow">Семейный архив · Фотогалерея</div>
+    <h1>Фотоальбом семьи Стрункиных</h1>
+    <p>Подлинные семейные портреты, военные снимки 1944–1946 годов и мемориальные фотографии рода. Нажмите на любой снимок, чтобы открыть его полностью.</p>
+  </div>
+</header>
+
+<nav aria-label="Разделы сайта">
+  <div class="wrap">
+    <a class="nav-home" href="index.html">СТРУНКИНЫ <span>· семейный архив</span></a>
+    <a href="index.html">Главная</a>
+    <a href="album.html" class="active">Фотоальбом</a>
+    <a href="#portraits">Портреты</a>
+    <a href="#war">1944–1946 (служба)</a>
+    <a href="#heritage">Село Речное</a>
+    <a href="ww1-heroes.html">Первая мировая</a>
+    <a href="parishes.html">Приходы</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <section class="section" id="portraits">
+      <span class="section-kicker">01 / Старшее поколение и семья</span>
+      <h2>Главные семейные портреты</h2>
+      <p class="subtle">Портреты Александра Васильевича и Зинаиды Ефимовны Стрункиных и общий снимок с детьми.</p>
+      <div class="album-grid">
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">Главный портрет</span><img src="assets/strunkin_av_main.jpg" alt="Александр Васильевич Стрункин (главный портрет)"></div>
+          <figcaption><strong>Александр Васильевич Стрункин</strong>Род. 14.11.1924, с. Речное. Главный семейный портрет.<small>Семейный архив</small></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">Главный портрет</span><img src="assets/strunkina_ze_main.jpg" alt="Зинаида Ефимовна Стрункина (урожд. Тараканова)"></div>
+          <figcaption><strong>Зинаида Ефимовна Стрункина</strong>Урожд. Тараканова, род. 14.10.1928. Главный семейный портрет.<small>Семейный архив</small></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">Кон. 1950-х</span><img src="assets/strunkiny_family_tree_photo.jpg" alt="Семья Стрункиных у новогодней ёлки"></div>
+          <figcaption><strong>Семья Стрункиных у новогодней ёлки</strong>Слева Валентина (мама Валя), сидит Александр Васильевич, сзади Владимир, сидит Зинаида Ефимовна с Татьяной на коленях.<small>г. Челябинск · Источник S80</small></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">Послевоенный портрет</span><img src="assets/strunkin_av_young.jpg" alt="Александр Васильевич Стрункин (послевоенный портрет)"></div>
+          <figcaption><strong>Александр Васильевич Стрункин</strong>Студийный портрет послевоенных лет.<small>Семейный архив</small></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="war">
+      <span class="section-kicker">02 / ВВС ВМФ и Прибалтика</span>
+      <h2>Военная служба (1944–1946 гг.)</h2>
+      <p class="subtle">Фотодокументы периода службы Александра Васильевича в морской авиации: Моздок, ст. Ново-Осетинская и Лиелупе.</p>
+      <div class="album-grid">
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">1944 г. · Моздок</span><img src="assets/Стрункин_Александр_Васильевич_1944_ВМФ_Моздок.jpg" alt="Александр Васильевич Стрункин в форме ВМФ, 1944 год"></div>
+          <figcaption><strong>А. В. Стрункин в форме ВМФ</strong>Период обучения при ВОК ВВС ВМФ в г. Моздоке (авиационный техник).<small>Источник S75</small></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-thumb contain"><span class="photo-badge">1944 г. · Ново-Осетинская</span><img src="assets/strunkin_av_1944_novo_osetinskaya.jpg" alt="Групповое фото ВВС ВМФ, 1944 год, ст. Ново-Осетинская"></div>
+          <figcaption><strong>Подразделение ВВС ВМФ СССР</strong>Подпись на фото: «1944 год, Ново-Осетинская» (близ г. Моздока). Предположительно А. В. Стрункин стоит 3-й слева в верхнем ряду.<small>Источник S79</small></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">Дек. 1946 г. · Лиелупе</span><img src="assets/strunkin_av_1946_lielupe.jpg" alt="А. В. Стрункин в шинели и фуражке ВМФ, декабрь 1946 г."></div>
+          <figcaption><strong>А. В. Стрункин на Рижском взморье</strong>В двубортной шинели и фуражке ВМФ. Санаторий ПрибВО, ст. Лиелупе (Латвия), декабрь 1946 г.<small>Источник S78</small></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-thumb contain"><span class="photo-badge">Оборот фото · 1946 г.</span><img src="assets/strunkin_av_1946_lielupe_back.jpg" alt="Дарственная надпись на обороте фото декабря 1946 г."></div>
+          <figcaption><strong>Автограф брата сестре Оле</strong>«На память сестре Оле от брата Александра декабрь 1946 г. санаторий ПрибВО ст. Лиелупе Рижское взморье АВСтрункин».<small>Источник S78 (Класс А)</small></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="heritage">
+      <span class="section-kicker">03 / Предки и малая родина</span>
+      <h2>Село Речное и мемориал</h2>
+      <p class="subtle">Портреты и памятники старших ветвей рода Стрункиных в селе Речном.</p>
+      <div class="album-grid">
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">1892–1957</span><img src="assets/Стрункин_Игнатий_Меркурьевич_1892_1957_портрет_Речное.jpg" alt="Портрет Игнатия Меркурьевича Стрункина"></div>
+          <figcaption><strong>Игнатий Меркурьевич Стрункин</strong>1892–1957. Герой Первой мировой войны, ефрейтор 1-го Заамурского полка.<small>Село Речное</small></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">Село Речное</span><img src="assets/Стрункины_Иван_Меркурьевич_и_Клавдия_Артемьевна_памятник_Речное.jpg" alt="Памятник Ивану Меркурьевичу и Клавдии Артемьевне Стрункиным"></div>
+          <figcaption><strong>Иван Меркурьевич и Клавдия Артемьевна</strong>Памятник в селе Речном.<small>Село Речное</small></figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-thumb"><span class="photo-badge">Портретный овал</span><img src="assets/Стрункины_Иван_Меркурьевич_и_Клавдия_Артемьевна_портрет.jpg" alt="Портреты Ивана и Клавдии Стрункиных на памятнике"></div>
+          <figcaption><strong>Портретный овал</strong>Иван Меркурьевич и Клавдия Артемьевна Стрункины.<small>Село Речное</small></figcaption>
+        </figure>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>Архивная служба истории семьи Стрункиных</div>
+    <div><a href="index.html">← Вернуться на главную</a></div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Закрыть">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Предыдущее фото">‹</button>
+  <div class="lightbox-inner">
+    <img id="lbImg" src="" alt="">
+    <div class="lightbox-caption" id="lbCap"></div>
+  </div>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Следующее фото">›</button>
+</div>
+
+<script>
+  const cards = Array.from(document.querySelectorAll('.photo-card'));
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  let cur = 0;
+
+  function show(idx) {
+    cur = (idx + cards.length) % cards.length;
+    const img = cards[cur].querySelector('img');
+    const title = cards[cur].querySelector('figcaption strong')?.textContent || '';
+    const desc = cards[cur].querySelector('figcaption')?.textContent.replace(title, '').trim() || '';
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCap.innerHTML = '<strong>' + title + '</strong><br>' + desc;
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+  }
+  function hide() {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+  }
+  cards.forEach((c, i) => c.querySelector('.photo-thumb').addEventListener('click', () => show(i)));
+  document.getElementById('lbClose').addEventListener('click', hide);
+  document.getElementById('lbPrev').addEventListener('click', () => show(cur - 1));
+  document.getElementById('lbNext').addEventListener('click', () => show(cur + 1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) hide(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+</script>
+</body>
+</html>
